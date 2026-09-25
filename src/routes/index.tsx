@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowDown, ArrowLeft, ArrowRight, Heart, Music2, MusicOff, X } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowRight, Heart, Music2, VolumeX, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FINAL_MESSAGE, FINAL_PHOTO, HER_NICKNAME, LETTER_CONTENT, MUSIC_URL, PHOTOS } from "@/lib/story-data";
@@ -203,7 +203,7 @@ function LoveStory() {
     else { try { await audio.current.play(); setMusicOn(true); } catch { setMusicOn(false); } }
   };
   return <main className="story-app">
-    {MUSIC_URL && <><audio ref={audio} src={MUSIC_URL} loop preload="none" /><Button variant="ghost" size="icon" className="music-control" aria-label={musicOn ? "Turn music off" : "Turn music on"} title={musicOn ? "Music off" : "Music on"} onClick={toggleMusic}>{musicOn ? <Music2 /> : <MusicOff />}</Button></>}
+    {MUSIC_URL && <><audio ref={audio} src={MUSIC_URL} loop preload="none" /><Button variant="ghost" size="icon" className="music-control" aria-label={musicOn ? "Turn music off" : "Turn music on"} title={musicOn ? "Music off" : "Music on"} onClick={toggleMusic}>{musicOn ? <Music2 /> : <VolumeX />}</Button></>}
     {chapter !== "opening" && <div className="chapter-progress" aria-label="Story progress"><span style={{ width: `${({ question: 20, story: 52, letter: 76, final: 100 } as Record<string, number>)[chapter]}%` }} /></div>}
     <AnimatePresence mode="wait">
       {chapter === "opening" && <motion.section key="opening" className="chapter opening-chapter" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.04, filter: "blur(10px)" }} transition={{ duration: .8 }}>
