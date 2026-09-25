@@ -100,8 +100,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .question-subtitle { color: var(--blush); font-family: var(--font-display); font-style: italic; font-size: 23px; }
 .question-arena { position: relative; width: min(100%, 550px); height: 220px; margin: 28px auto 0; touch-action: pan-y; }
 .yes-button { position: absolute; top: 54%; left: 17%; min-width: 142px; z-index: 2; }
-.no-button { position: absolute; min-width: 110px; transform: translate(-50%, -50%); transition: left .27s cubic-bezier(.2,.8,.2,1), top .27s cubic-bezier(.2,.8,.2,1), box-shadow .3s; z-index: 2; box-shadow: none; }
-.no-button:hover { transform: translate(-50%, -50%); }
+.no-button { position: absolute; min-width: 110px; transition: left .27s cubic-bezier(.2,.8,.2,1), top .27s cubic-bezier(.2,.8,.2,1), box-shadow .3s; z-index: 2; box-shadow: none; }
+.no-button:hover { transform: none; }
 .tease { height: 30px; font-family: var(--font-display); font-style: italic; color: var(--gold); font-size: 18px; }
 .reveal-chapter { min-height: 100svh; display: grid; place-items: center; position: relative; overflow: hidden; text-align: center; color: var(--primary-foreground); background: radial-gradient(circle at center, color-mix(in oklab, var(--primary) 55%, var(--wine)), var(--wine) 64%, var(--night)); }
 .reveal-inner { z-index: 2; padding: 70px 20px; }
