@@ -210,7 +210,7 @@ function LoveStory() {
         <div className="opening-photo" /><div className="opening-shade" /><Ambient />
         <div className="opening-content">
           <motion.p className="eyebrow light-eyebrow" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .5 }}>A little something, just for you</motion.p>
-          <motion.h1 className="display" initial={{ opacity: 0, scale: .92, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ delay: .8, duration: 1.1 }}>Hi {HER_NICKNAME}<span className="opening-heart">💕</span></motion.h1>
+          <motion.h1 className="display" initial={{ opacity: 0, scale: .92, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ delay: .8, duration: 1.1 }}>Hi {HER_NICKNAME}<span className="opening-heart" aria-label="love">♥</span></motion.h1>
           <motion.p className="opening-subtitle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>This is our little love story.</motion.p>
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.9 }}><Button variant="story" onClick={() => moveTo("question")}>Enter Our Story <Heart size={16} fill="currentColor" /></Button></motion.div>
         </div>
