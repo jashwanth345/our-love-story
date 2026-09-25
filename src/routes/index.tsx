@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowDown, ArrowLeft, ArrowRight, Heart, Music2, Music2Off, X } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowRight, Heart, Music2, MusicOff, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FINAL_MESSAGE, FINAL_PHOTO, HER_NICKNAME, LETTER_CONTENT, MUSIC_URL, PHOTOS } from "@/lib/story-data";
@@ -112,7 +112,7 @@ function MemoryAlbum({ onNext }: { onNext: () => void }) {
       <div className="memory-layout">
         {PHOTOS.map((photo, index) => <motion.button
           type="button" key={photo.src} className={`memory-photo memory-photo-${index + 1}`}
-          initial={reduced ? undefined : { opacity: 0, y: 70, rotate: index % 2 ? 4 : -4 }}
+          initial={reduced ? false : { opacity: 0, y: 70, rotate: index % 2 ? 4 : -4 }}
           whileInView={{ opacity: 1, y: 0, rotate: index % 2 ? 2 : -2 }} viewport={{ once: true, amount: .15 }} transition={{ duration: .8, ease: "easeOut" }}
           onClick={() => setActive(index)} aria-label={`View photo: ${photo.title}`}>
           <span className="photo-mat"><img src={photo.src} alt={photo.alt} loading="lazy" /></span>
@@ -124,12 +124,12 @@ function MemoryAlbum({ onNext }: { onNext: () => void }) {
       <div className="album-end"><span className="little-heart">♥</span><p>And my favorite part of every memory is you.</p><Button variant="story" onClick={onNext}>There’s something I want to tell you… <span aria-hidden="true">💌</span></Button></div>
     </section>
     <AnimatePresence>
-      {active !== null && <motion.div className="lightbox" role="dialog" aria-modal="true" aria-label="Photo album" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setActive(null)}>
+      {active !== null && PHOTOS[active] && <motion.div className="lightbox" role="dialog" aria-modal="true" aria-label="Photo album" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setActive(null)}>
         <Button variant="ghost" size="icon" className="lightbox-close" aria-label="Close photo" onClick={() => setActive(null)}><X /></Button>
         <Button variant="ghost" size="icon" className="lightbox-prev" aria-label="Previous photo" onClick={event => { event.stopPropagation(); setActive((active - 1 + PHOTOS.length) % PHOTOS.length); }}><ArrowLeft /></Button>
         <motion.div key={active} className="lightbox-content" initial={{ opacity: 0, scale: .94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .35 }} onClick={event => event.stopPropagation()}>
-          <img src={PHOTOS[active].src} alt={PHOTOS[active].alt} />
-          <div><span>{PHOTOS[active].title}</span><p>{PHOTOS[active].caption}</p></div>
+          <img src={PHOTOS[active]?.src} alt={PHOTOS[active]?.alt} />
+          <div><span>{PHOTOS[active]?.title}</span><p>{PHOTOS[active]?.caption}</p></div>
           <small>{active + 1} / {PHOTOS.length}</small>
         </motion.div>
         <Button variant="ghost" size="icon" className="lightbox-next" aria-label="Next photo" onClick={event => { event.stopPropagation(); setActive((active + 1) % PHOTOS.length); }}><ArrowRight /></Button>
@@ -203,7 +203,7 @@ function LoveStory() {
     else { try { await audio.current.play(); setMusicOn(true); } catch { setMusicOn(false); } }
   };
   return <main className="story-app">
-    {MUSIC_URL && <><audio ref={audio} src={MUSIC_URL} loop preload="none" /><Button variant="ghost" size="icon" className="music-control" aria-label={musicOn ? "Turn music off" : "Turn music on"} title={musicOn ? "Music off" : "Music on"} onClick={toggleMusic}>{musicOn ? <Music2 /> : <Music2Off />}</Button></>}
+    {MUSIC_URL && <><audio ref={audio} src={MUSIC_URL} loop preload="none" /><Button variant="ghost" size="icon" className="music-control" aria-label={musicOn ? "Turn music off" : "Turn music on"} title={musicOn ? "Music off" : "Music on"} onClick={toggleMusic}>{musicOn ? <Music2 /> : <MusicOff />}</Button></>}
     {chapter !== "opening" && <div className="chapter-progress" aria-label="Story progress"><span style={{ width: `${({ question: 20, story: 52, letter: 76, final: 100 } as Record<string, number>)[chapter]}%` }} /></div>}
     <AnimatePresence mode="wait">
       {chapter === "opening" && <motion.section key="opening" className="chapter opening-chapter" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.04, filter: "blur(10px)" }} transition={{ duration: .8 }}>
