@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep personal copy, image metadata, and optional music URL in `src/lib/story-data.ts` so the story UI stays separate from editable content.
