@@ -75,7 +75,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .story-button:active { transform: scale(.96); }
 .chapter { min-height: 100svh; position: relative; display: grid; place-items: center; isolation: isolate; }
 .opening-chapter { background: var(--night); color: var(--primary-foreground); }
-.opening-photo { position: absolute; inset: 0; z-index: -2; background-image: url('/__l5e/assets-v1/799d47e9-bc29-4c52-97fa-15d8084b07db/cafe.jpeg'); background-position: center 45%; background-size: cover; }
+.opening-photo { position: absolute; inset: 0; z-index: -2; background-image: url('/images/cafe.jpeg'); background-position: center 45%; background-size: cover; }
 .opening-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, color-mix(in oklab, var(--night) 96%, transparent) 0%, color-mix(in oklab, var(--night) 86%, transparent) 42%, color-mix(in oklab, var(--wine) 45%, transparent) 100%), linear-gradient(0deg, var(--night), transparent 35%); }
 .opening-content { width: min(100% - 44px, 1100px); padding: 100px 0; position: relative; z-index: 2; }
 .opening-content h1 { font-size: clamp(72px, 9vw, 148px); margin: 22px 0 18px; }

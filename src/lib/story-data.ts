@@ -1,10 +1,10 @@
-import heldClose from "@/assets/held-close.jpeg.asset.json";
-import roadside from "@/assets/roadside.jpeg.asset.json";
-import handInHand from "@/assets/hand-in-hand.jpeg.asset.json";
-import temple from "@/assets/temple.jpeg.asset.json";
-import cafe from "@/assets/cafe.jpeg.asset.json";
-import portrait from "@/assets/portrait.jpeg.asset.json";
-import celebration from "@/assets/celebration.jpeg.asset.json";
+const heldClose = { url: "/images/held-close.jpeg" };
+const roadside = { url: "/images/roadside.jpeg" };
+const handInHand = { url: "/images/hand-in-hand.jpeg" };
+const temple = { url: "/images/temple.jpeg" };
+const cafe = { url: "/images/cafe.jpeg" };
+const portrait = { url: "/images/portrait.jpeg" };
+const celebration = { url: "/images/celebration.jpeg" };
 
 // Change the words and photos here to make the story yours.
 export const HER_NICKNAME = "Nanna";
